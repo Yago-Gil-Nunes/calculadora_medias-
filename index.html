@@ -1,46 +1,44 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de médias</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    </head>
-<body>
-    <div class="container">
-        <header>
-            <img src="./imagens/logo.png" alt="capelo e diploma">
-            <h1>Calculadora de médias</h1>
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html lang="pt-br"> <!-- Início do documento HTML e definição do idioma como português do Brasil -->
+<head> <!-- Cabeçalho do documento -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Define a janela de visualização para dispositivos móveis -->
+    <title>Calculadora de médias</title> <!-- Título da página -->
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo de estilo CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Otimiza a conexão com o servidor de fontes do Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Otimiza a conexão com o servidor de fontes do Google com CORS habilitado -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> <!-- Importa a fonte Roboto do Google Fonts -->
+</head>
+<body> <!-- Corpo do documento -->
+    <div class="container"> <!-- Container principal -->
+        <header> <!-- Cabeçalho da página -->
+            <img src="./imagens/logo.png" alt="capelo e diploma"> <!-- Imagem do logotipo -->
+            <h1>Calculadora de médias</h1> <!-- Título principal da página -->
         </header>
-        <form id="form-atividade">
-            <input type="text" id="nome-atividade" required placeholder="Nome da atividade">
-            <input type="number" id="nota-atividade" required placeholder="Nota da atividade" min="0" max="10">
-            <button type="submit">Adicionar +</button>
+        <form id="form-atividade"> <!-- Formulário para adicionar atividades -->
+            <input type="text" id="nome-atividade" required placeholder="Nome da atividade"> <!-- Campo de texto para o nome da atividade -->
+            <input type="number" id="nota-atividade" required placeholder="Nota da atividade" min="0" max="10"> <!-- Campo numérico para a nota da atividade -->
+            <button type="submit">Adicionar +</button> <!-- Botão para submeter o formulário -->
         </form>
-        <table cellspacing="0">
-            <thead>
-                <tr>
-                    <th>
-                        Nome da atividade
-                    </th>
-                    <th>Nota da atividade</th>
-                    <th>Aprovado?</th>
+        <table cellspacing="0"> <!-- Tabela para exibir as atividades e notas, com espaçamento entre células definido como 0 -->
+            <thead> <!-- Cabeçalho da tabela -->
+                <tr> <!-- Linha do cabeçalho -->
+                    <th>Nome da atividade</th> <!-- Cabeçalho da coluna para o nome da atividade -->
+                    <th>Nota da atividade</th> <!-- Cabeçalho da coluna para a nota da atividade -->
+                    <th>Aprovado?</th> <!-- Cabeçalho da coluna para indicar se a atividade foi aprovada -->
                 </tr>
             </thead>
-            <tbody>
+            <tbody> <!-- Corpo da tabela onde as linhas das atividades serão adicionadas dinamicamente -->
             </tbody>
-            <tfoot>
-                <tr>
-                    <td>Média final</td>
-                    <td id="media-final-valor">---</td>
-                    <td id="media-final-resultado">---</td>
+            <tfoot> <!-- Rodapé da tabela -->
+                <tr> <!-- Linha do rodapé -->
+                    <td>Média final</td> <!-- Coluna do rodapé para o rótulo "Média final" -->
+                    <td id="media-final-valor">---</td> <!-- Coluna do rodapé para o valor da média final -->
+                    <td id="media-final-resultado">---</td> <!-- Coluna do rodapé para o resultado da média final (aprovado ou não) -->
                 </tr>
             </tfoot>
         </table>
     </div>
-    <script src="./main.js" ></script>
+    <script src="./main.js"></script> <!-- Link para o arquivo JavaScript -->
 </body>
 </html>
