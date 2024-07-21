@@ -1,64 +1,68 @@
-const form = document.getElementById("form-atividade");
-const imgAprovado = `<img src="./imagens/aprovado.png" alt= "emoji celebrando"/> `;
-const imgReprovado = `<img src= "./imagens/reprovado.png" alt="emoji triste" /> `;
-const atividades = [];
-const notas = [];
-const spanAprovado = `<span class= " resultado aprovado">Aprovado</span>`; 
-const spanReprovado = `<span class= " resultado reprovado">Reprovado</span>`;
-const notaMinima = parseFloat(prompt("Digite a nota mínima."))
+const form = document.getElementById("form-atividade"); // Obtém o elemento do formulário pelo ID
+const imgAprovado = `<img src="./imagens/aprovado.png" alt= "emoji celebrando"/> `; // Define a imagem para atividade aprovada
+const imgReprovado = `<img src= "./imagens/reprovado.png" alt="emoji triste" /> `; // Define a imagem para atividade reprovada
+const atividades = []; // Array para armazenar os nomes das atividades
+const notas = []; // Array para armazenar as notas das atividades
+const spanAprovado = `<span class= " resultado aprovado">Aprovado</span>`; // Define o span para resultado aprovado
+const spanReprovado = `<span class= " resultado reprovado">Reprovado</span>`; // Define o span para resultado reprovado
+const notaMinima = parseFloat(prompt("Digite a nota mínima.")); // Solicita ao usuário a nota mínima e a converte para float
 
-let linhas = ``;
+let linhas = ``; // Variável para armazenar as linhas da tabela
 
-form.addEventListener("submit", function(e)  {
-    e.preventDefault();
+// Adiciona um evento de 'submit' ao formulário
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // Previne o comportamento padrão do formulário
 
-    adicionaLinhas();
-    atualizaTabela();
-    atulizaMediaFinal();
+    adicionaLinhas(); // Chama a função para adicionar linhas na tabela
+    atualizaTabela(); // Chama a função para atualizar a tabela
+    atulizaMediaFinal(); // Chama a função para atualizar a média final
 })
 
-function adicionaLinhas () {
-    const inputNomeAtividade = document.getElementById("nome-atividade");
-    const inputNotaAtividade = document.getElementById("nota-atividade");
+// Função para adicionar linhas na tabela
+function adicionaLinhas() {
+    const inputNomeAtividade = document.getElementById("nome-atividade"); // Obtém o campo de nome da atividade
+    const inputNotaAtividade = document.getElementById("nota-atividade"); // Obtém o campo de nota da atividade
 
-    
-
-    if(atividades.includes(inputNomeAtividade.value)) {
-        alert(`A atividade: ${inputNomeAtividade.value} ja foi inserida.`)
+    // Verifica se a atividade já foi inserida
+    if (atividades.includes(inputNomeAtividade.value)) {
+        alert(`A atividade: ${inputNomeAtividade.value} já foi inserida.`); // Exibe um alerta se a atividade já foi adicionada
     } else {
-        atividades.push(inputNomeAtividade.value);
-        notas.push(parseFloat(inputNotaAtividade.value));
+        atividades.push(inputNomeAtividade.value); // Adiciona a atividade ao array de atividades
+        notas.push(parseFloat(inputNotaAtividade.value)); // Adiciona a nota ao array de notas
         
-        let linha = `<tr>`
-        linha += `<td>${inputNomeAtividade.value}</td>`;
-        linha += `<td>${inputNotaAtividade.value}</td>`;
-        linha += `<td>${inputNotaAtividade.value >=notaMinima ? imgAprovado : imgReprovado}</td>`;
+        let linha = `<tr>`; // Cria uma nova linha na tabela
+        linha += `<td>${inputNomeAtividade.value}</td>`; // Adiciona o nome da atividade na linha
+        linha += `<td>${inputNotaAtividade.value}</td>`; // Adiciona a nota da atividade na linha
+        linha += `<td>${inputNotaAtividade.value >= notaMinima ? imgAprovado : imgReprovado}</td>`; // Adiciona a imagem de aprovado ou reprovado conforme a nota
         linha += `</tr>`;
 
-        linhas += linha;
-
+        linhas += linha; // Adiciona a linha à variável de linhas
     }
     
-    inputNomeAtividade.value = "" ;
-    inputNotaAtividade.value = "" ;
+    inputNomeAtividade.value = ""; // Limpa o campo de nome da atividade
+    inputNotaAtividade.value = ""; // Limpa o campo de nota da atividade
 }
 
+// Função para atualizar a tabela
 function atualizaTabela() {
-    const corpoTabela = document.querySelector("tbody");
-    corpoTabela.innerHTML = linhas;
+    const corpoTabela = document.querySelector("tbody"); // Obtém o corpo da tabela
+    corpoTabela.innerHTML = linhas; // Atualiza o corpo da tabela com as novas linhas
 }
 
-function atulizaMediaFinal () {
-    const mediaFinal = calculaMediaFinal()
-    document.getElementById("media-final-valor").innerHTML = mediaFinal.toFixed(2);
-    document.getElementById("media-final-resultado").innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado;
+// Função para atualizar a média final
+function atulizaMediaFinal() {
+    const mediaFinal = calculaMediaFinal(); // Calcula a média final
+    document.getElementById("media-final-valor").innerHTML = mediaFinal.toFixed(2); // Atualiza o valor da média final na tabela
+    document.getElementById("media-final-resultado").innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado; // Atualiza o resultado (aprovado ou reprovado) conforme a média final
 }
 
-function calculaMediaFinal () {
-    let somaDasnotas = 0;
+// Função para calcular a média final
+function calculaMediaFinal() {
+    let somaDasnotas = 0; // Inicializa a variável para a soma das notas
 
-    for (let i = 0; i<notas.length; i++) {
+    // Itera sobre o array de notas e soma os valores
+    for (let i = 0; i < notas.length; i++) {
         somaDasnotas += notas[i];
     }
-    return somaDasnotas / notas.length;
+    return somaDasnotas / notas.length; // Retorna a média das notas
 }
